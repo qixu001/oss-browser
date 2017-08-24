@@ -1,7 +1,7 @@
 
 ## 1. todo
 
-* maxConcurrency 动态调整无上限。
-* 图片预览放大缩小。
-* 错误堆栈
-* 跨区域复制
+* maxConcurrency dynamically adjusted without limit.
+* Preview image's zoom in and zoom out
+* Error callastack
+* Cross-region replication

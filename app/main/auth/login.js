@@ -55,7 +55,7 @@ angular.module('web')
 
             if(info.id && info.secret && info.stoken && info.privilege && info.expiration && info.osspath){
 
-               //过期
+               //Expiration
                try{
                  var d = new Date(info.expiration).getTime();
                  info.isExpired = d <= new Date().getTime();
@@ -81,7 +81,7 @@ angular.module('web')
         $scope.flags.showHis = localStorage.getItem(SHOW_HIS) || 'NO';
         $scope.item = AuthInfo.getRemember();
 
-        //临时token
+        //auth token
         $scope.item.authToken = localStorage.getItem(KEY_AUTHTOKEN) || '';
         authTokenChange();
 
@@ -107,8 +107,8 @@ angular.module('web')
       }
 
       function showRemoveHis(h){
-        var title = T('auth.removeAK.title'); //删除AK
-        var message = T('auth.removeAK.message',{id: '<code>'+h.id+'</code>'}); //'ID：'+h.id+', 确定删除?'
+        var title = T('auth.removeAK.title'); //deletes AK
+        var message = T('auth.removeAK.message',{id: '<code>'+h.id+'</code>'}); //'ID：'+h.id+', Confirm deletion?'
         Dialog.confirm(title,message,function(b){
           if(b){
             AuthInfo.removeFromHistories(h.id);
@@ -122,9 +122,9 @@ angular.module('web')
       }
 
       function showCleanHistories(){
-        var title = T('auth.clearAKHistories.title'); //清空AK历史
-        var message = T('auth.clearAKHistories.message'); //确定?
-        var successMessage = T('auth.clearAKHistories.successMessage'); //已清空AK历史
+        var title = T('auth.clearAKHistories.title'); //Clear AK History
+        var message = T('auth.clearAKHistories.message'); //Are you sure?
+        var successMessage = T('auth.clearAKHistories.successMessage'); //Cleared AK History
         Dialog.confirm(title, message,function(b){
           if(b){
             AuthInfo.cleanHistories();
@@ -150,12 +150,12 @@ angular.module('web')
           AuthInfo.remember(data);
         }
 
-        Toast.info('正在登录中...', 1000);
+        Toast.info('Logining...', 1000);
 
 
         Auth.login(data).then(function(){
           if($scope.flags.remember=='YES') AuthInfo.addToHistories(data);
-          Toast.success('登录成功，正在跳转...', 1000);
+          Toast.success('Login successfully, redirecting...', 1000);
           $location.url('/');
         },function(err){
           Toast.error(err.code+':'+err.message);
@@ -176,10 +176,10 @@ angular.module('web')
 
         var data = angular.copy($scope.authTokenInfo);
 
-        Toast.info('正在登录...', 1000);
+        Toast.info('Logining...', 1000);
 
         Auth.login(data).then(function(){
-          Toast.success('登录成功，正在跳转...', 1000);
+          Toast.success('Logining successfully, redirecting...', 1000);
           $location.url('/');
         },function(err){
           Toast.error(err.code+':'+err.message);

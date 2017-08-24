@@ -6,7 +6,7 @@
     <h4 class="modal-title">
       <i class="fa fa-cog text-warning"></i>
       {{'settings'|translate}}
-      <!-- 设置 -->
+      <!-- Settings -->
     </h4>
   </div>
   <div class="modal-body">
@@ -15,7 +15,7 @@
       <legend><h5 class="text-primary">{{'settings.subtitle.updown'|translate}}</h5></legend>
       <div class="form-group">
         <label class="col-sm-4 control-label">
-        <!-- 最大上传任务数: -->
+        <!-- Max upload number: -->
         {{'settings.maxUploadNum'|translate}}:
       </label>
         <div class="col-sm-7">
@@ -25,7 +25,7 @@
 
       <div class="form-group">
         <label class="col-sm-4 control-label">
-        <!-- 最大下载任务数: -->
+        <!-- Max download number: -->
         {{'settings.maxDownloadNum'|translate}}:
       </label>
         <div class="col-sm-7">
@@ -48,7 +48,7 @@
 
       <div class="form-group">
         <label class="col-sm-4 control-label">
-        <!-- 是否显示图片缩略: -->
+        <!-- If to show thumbnail: -->
         {{'settings.WhetherShowThumbnail'|translate}}:
       </label>
         <div class="col-sm-7">
@@ -58,7 +58,7 @@
           ng-model="set.showImageSnapshot"
           ng-change="setChange(form1,'showImageSnapshot')"
           ng-true-value="1" ng-false-value="0" />
-          <!-- (在文件列表中显示图片缩略, 会消耗一定的流量) -->
+          <!-- (Showing thumbnail will have additional data traffic) -->
           ({{'settings.WhetherShowThumbnail.msg'|translate}})
         </label>
           </div>
@@ -86,7 +86,7 @@
 
       <div class="form-group">
         <label class="col-sm-4 control-label">
-        <!-- STMP地址: -->
+        <!-- STMP Address: -->
         {{'settings.mailSmtp.addr'|translate}}:
       </label>
         <div class="col-sm-5" style="padding-right:2px">
@@ -100,7 +100,7 @@
 
       <div class="form-group">
         <label class="col-sm-4 control-label">
-        <!-- 使用SSL: -->
+        <!-- Use SSL: -->
         {{'settings.mailSmtp.ssl'|translate}}:
       </label>
         <div class="col-sm-7">
@@ -110,7 +110,7 @@
 
       <div class="form-group">
         <label class="col-sm-4 control-label">
-        <!-- 发送邮件的邮箱: -->
+        <!-- The mailbox for sending email from: -->
         {{'settings.mailSmtp.from'|translate}}:
       </label>
         <div class="col-sm-7">
@@ -121,7 +121,7 @@
       <div class="form-group">
         <label class="col-sm-4 control-label">
         {{'user'|translate}}/{{'pass'|translate}}
-        <!-- 用户名/密码: -->
+        <!-- User/password: -->
       </label>
         <div class="col-sm-4" style="padding-right:2px">
           <input type="text" name="text" ng-model="set.mailSmtp.auth.user" placeholder="UserName" ng-required="false" ng-change="setChange(form1,'mailSmtp', 1000)" class="form-control" />
@@ -145,10 +145,10 @@
   <div class="modal-footer">
     <!-- <button type="submit" class="btn btn-success btn-sm">
       <i class="glyphicon glyphicon-ok"></i>
-      保存</button> -->
+      Save</button> -->
     <button type="button" class="btn btn-default btn-sm" ng-click="cancel()">
       <i class="glyphicon glyphicon-remove"></i>
-      <!-- 关闭 -->
+      <!-- Close -->
       {{'close'|translate}}
     </button>
   </div>

@@ -15,7 +15,7 @@ angular.module('web')
       $.get('release-notes/'+version+'.md', fn);
     }
 
-    //获取最新releaseNote
+    //Gets the latest releaseNote
     function getLastestReleaseNote(version, fn){
       var ind = pkg.upgrade_url.lastIndexOf('aliyun/oss-browser');
       if(ind>0){

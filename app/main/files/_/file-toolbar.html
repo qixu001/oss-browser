@@ -12,11 +12,11 @@
       <button ng-disabled="currentAuthInfo.privilege=='readOnly'" type="button" class="btn btn-default btn-sm" ng-click="showUploadDialog()">
         <i class="glyphicon glyphicon-cloud-upload text-info"></i>
         {{'upload'|translate}}
-        <!-- 上传 -->
+        <!-- Upload -->
       </button>
       <button ng-disabled="currentAuthInfo.privilege=='readOnly'" type="button" class="btn btn-default btn-sm" ng-click="showAddFolder()">
         <i class="glyphicon glyphicon-plus text-success"></i>
-        <!-- 新建目录 -->
+        <!-- create folder -->
         {{'folder.create'|translate}}
       </button>
       <!-- mock -->
@@ -31,20 +31,20 @@
 
       <button ng-disabled="!objects||objects==0" type="button" class="btn btn-default btn-sm" ng-click="sel.all=!sel.all;selectAll()">
         <i class="fa" ng-class="{'fa-check-square-o': sel.all ,'fa-square-o': !sel.all}"></i>
-        <!-- 全选 -->
+        <!-- select all -->
         {{'select.all'|translate}}
       </button>
 
       <button type="button" class="btn btn-default btn-sm" ng-disabled="!sel.has" ng-click="showDownloadDialog()">
         <i class="glyphicon glyphicon-cloud-download text-primary"></i>
-        <!-- 下载 -->
+        <!-- Download -->
         {{'download'|translate}}
       </button>
 
       <button type="button" class="btn btn-default btn-sm"
       ng-disabled="!sel.has || currentAuthInfo.privilege=='readOnly'" ng-click="showMove(sel.has, true)">
       <i class="fa fa-clone text-primary"></i>
-        <!-- 复制 -->
+        <!-- Copy -->
         {{'copy'|translate}}
       </button>
 
@@ -53,7 +53,7 @@
 
     <div class="btn-group" role="group">
       <button type="button" class="btn btn-default btn-sm dropdown-toggle" ng-disabled="!sel.has" data-toggle="dropdown">
-        <!-- 更多 -->
+        <!-- More -->
         {{'more'|translate}}
         <span class="caret"></span>
         <span class="sr-only">Toggle Dropdown</span>
@@ -62,7 +62,7 @@
         <li>
           <a href="" class="" ng-if="sel.has && currentAuthInfo.privilege!='readOnly'" ng-click="showMove(sel.has)">
             <i class="fa fa-cut text-primary"></i>
-            <!-- 移动 -->
+            <!-- Move -->
             {{'move'|translate}}
           </a>
         </li>
@@ -70,7 +70,7 @@
           <a href="" ng-if="(sel.has.length==1) && currentAuthInfo.privilege!='readOnly' && sel.has[0].storageClass!='Archive'"
           ng-click="showRename(sel.has[0])">
             <i class="fa fa-edit text-info"></i>
-            <!-- 重命名 -->
+            <!-- Rename -->
             {{'rename'|translate}}
           </a>
         </li>
@@ -81,7 +81,7 @@
             ng-click="showACL(sel.has[0])">
             <i class="fa fa-shield text-success"></i>
             {{'acl'|translate}}
-            <!-- ACL权限 -->
+            <!-- ACL Permission -->
           </a>
         </li>
 
@@ -91,7 +91,7 @@
             ng-click="showGrant(sel.has)">
             <i class="fa fa-shield text-warning"></i>
             {{'simplePolicy'|translate}}
-            <!-- 简化Policy授权 -->
+            <!-- Simplify Policy grant -->
           </a>
         </li>
         <li>
@@ -99,7 +99,7 @@
             ng-class="{'text-success':sel.has}"
             ng-click="showGrantToken(sel.has[0])">
             <i class="fa fa-shield text-success"></i>
-            <!-- 生成授权码 -->
+            <!-- generate auth token -->
             {{'genAuthToken'|translate}}
           </a>
         </li>
@@ -107,7 +107,7 @@
         <li>
           <a href="" ng-if="sel.has.length==1 && !sel.has[0].isFolder && currentAuthInfo.id.indexOf('STS.')!=0" ng-click="showAddress(sel.has[0])">
             <i class="fa fa-download"></i>
-            <!-- 获取地址 -->
+            <!-- get address -->
             {{'getAddress'|translate}}
           </a>
         </li>
@@ -115,7 +115,7 @@
         <li>
           <a href="" ng-if="sel.has.length==1 && !sel.has[0].isFolder" ng-click="showHttpHeaders(sel.has[0])">
             <i class="fa fa-cog"></i>
-            <!-- Http头 -->
+            <!-- Http header -->
             {{'http.headers'|translate}}
           </a>
         </li>
@@ -124,7 +124,7 @@
           <a href="" class="" ng-if="sel.has && currentAuthInfo.privilege!='readOnly'" ng-click="showDeleteFilesSelected()">
             <i class="fa fa-remove text-danger"></i>
             {{'delete'|translate}}
-            <!-- 删除 -->
+            <!-- deletion -->
           </a>
         </li>
       </ul>
@@ -138,7 +138,7 @@
       ng-click="showPaste()">
       <span class="text-primary"><i class="fa fa-paste"></i>
         {{'paste'|translate}}({{keepMoveOptions.items.length}})
-        <!-- 粘贴 -->
+        <!-- paste -->
       </button>
 
       <button class="btn btn-default btn-sm" style="padding-left:3px;padding-right:3px;" type="button"
@@ -166,7 +166,7 @@
   <div class="col-sm-3 pd0">
     <span ng-include="'main/files/_/list-view-options.html'"></span>
     <span ng-if="currentAuthInfo.id.indexOf('STS.')!=0" class="f8 text-muted pull-right" style="line-height:30px;">
-      <!-- 区域: -->
+      <!-- region: -->
       {{'region'|translate}}:
       {{currentInfo.region}}
       &nbsp;</span>

@@ -8,20 +8,20 @@
           <input type="checkbox" ng-model="sel.all" name="x-all" ng-click="selectAll()" />
         </th>
         <th>
-          <!-- 名称 -->
+          <!-- name -->
           {{'name'|translate}}
         </th>
         <th>
-          <!-- 大小 -->
+          <!-- size -->
           {{'type'|translate}} /
           {{'size'|translate}}
         </th>
         <th>
-          <!-- 最后修改时间 -->
+          <!-- Last modified time -->
           {{'lastModifyTime'|translate}}
         </th>
         <th class="text-right">
-          <!-- 操作 -->
+          <!-- operation -->
           {{'actions'|translate}}
           &nbsp;</th>
       </tr>
@@ -58,7 +58,7 @@
         </td>
         <td>
           <span ng-if="item.isFolder==true" class="text-muted">
-            <!-- 目录 -->
+            <!-- folder -->
             {{'folder'|translate}}
           </span>
           <span ng-if="item.isFolder!=true">{{item.size|sizeFormat}}</span>
@@ -70,37 +70,37 @@
         | -->
           <span ng-if="!item.isFolder && (item.storageClass!='Archive' || item.storageStatus==3)">
             <a href="" ng-click="showAddress(item);$event.stopPropagation()" class="text-info">
-              <!-- 获取地址 -->
+              <!-- get address -->
               {{'getAddress'|translate}}
             </a> |
           </span>
 
           <span ng-if="item.storageClass!='Archive' || item.storageStatus==3">
             <a href="" ng-click="showDownload(item);$event.stopPropagation()">
-              <!-- 下载 -->
+              <!-- Download -->
               {{'download'|translate}}
             </a> |
           </span>
 
           <span ng-if="!item.isFolder && (item.storageClass=='Archive' && item.storageStatus!=3)">
              <a href="" ng-click="showRestore(item);$event.stopPropagation()">
-               <!-- 恢复 -->
+               <!-- restore -->
                {{'restore'|translate}}
              </a> |
           </span>
 
 
           <a href="" ng-click="showDeleteFiles([item])" class="text-danger">
-            <!-- 删除 -->
+            <!-- Delete -->
             {{'delete'|translate}}
           </a>
-          <!-- <a href="" ng-click="showGrant([item]);$event.stopPropagation()" class="text-success">授权</a> -->
+          <!-- <a href="" ng-click="showGrant([item]);$event.stopPropagation()" class="text-success">Grant permission</a> -->
           &nbsp;
         </td>
       </tr>
     </table>
     <div class="text-center clearfix pd2" ng-if="nextObjectsMarker">
-      <!-- 正在加载更多.. -->
+      <!-- loading more.. -->
       {{'loading.more'|translate}}
     </div>
 
@@ -131,7 +131,7 @@
     <div class="clearfix"></div>
 
     <div class="text-center clearfix pd2" ng-if="nextObjectsMarker">
-      <!-- 正在加载更多.. -->
+      <!-- Loading more.. -->
       {{'loading.more'|translate}}
     </div>
 

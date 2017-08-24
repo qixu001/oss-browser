@@ -75,8 +75,8 @@ angular.module('web')
         if(!$scope.lists.uploadJobList || $scope.lists.uploadJobList.length==0){
           return;
         }
-        var title = T('clear.all.title');//清空所有
-        var message = T('clear.all.upload.message');//确定清空所有上传任务?
+        var title = T('clear.all.title');//Clear all
+        var message = T('clear.all.upload.message');//OK to clear all uploading tasks?
         Dialog.confirm(title, message, function (btn) {
           if (btn) {
 
@@ -102,7 +102,7 @@ angular.module('web')
 
           ossUploadManager.stopCreatingJobs();
 
-          Toast.info(T('pause.on')); //'正在暂停...'
+          Toast.info(T('pause.on')); //'Pausing...'
           $scope.allActionBtnDisabled=true;
 
           angular.forEach(arr, function (n) {
@@ -120,7 +120,7 @@ angular.module('web')
       function startAll() {
         var arr = $scope.lists.uploadJobList;
         stopFlag = false;
-        //串行
+        //serialization
         if(arr && arr.length>0){
           $scope.allActionBtnDisabled=true;
           DelayDone.seriesRun(arr, function(n, fn){

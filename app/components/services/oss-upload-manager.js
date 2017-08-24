@@ -80,7 +80,7 @@ angular.module('web')
       }
 
       function checkStart() {
-        //流控, 同时只能有 n 个上传任务.
+        //concurrency control, can only have n concurrent upload tasks
         var maxConcurrency = settingsSvs.maxUploadJobCount.get();
         //console.log(concurrency , maxConcurrency);
         concurrency = Math.max(0,concurrency);
@@ -113,11 +113,11 @@ angular.module('web')
       }
 
       /**
-       * 上传
-       * @param filePaths []  {array<string>}  有可能是目录，需要遍历
+       * Upload
+       * @param filePaths []  {array<string>}  It could be folder which needs the iteration
        * @param bucketInfo {object} {bucket, region, key}
-       * @param jobsAddingFn {Function} 快速加入列表回调方法， 返回jobs引用，但是该列表长度还在增长。
-       * @param jobsAddedFn {Function} 加入列表完成回调方法， jobs列表已经稳定
+       * @param jobsAddingFn {Function} The callback of adding to the list, return jobs reference. The list is still growing.
+       * @param jobsAddedFn {Function} The callback of finished adding to the list. The job list is not changed anymore.
        */
       function createUploadJobs(filePaths, bucketInfo, jobsAddingFn) {
         stopCreatingFlag = false;
@@ -163,7 +163,7 @@ angular.module('web')
           if(len==0) callFn([]);
           else inDig();
 
-          //串行
+          //serialization
           function inDig() {
             dig(path.join(parentPath, arr[c]), dirPath,  function (jobs) {
               t = t.concat(jobs);
@@ -193,22 +193,22 @@ angular.module('web')
           var filePath = path.relative(dirPath, absPath);
 
           if(path.sep!='/'){
-            //修复window下 \ 问题
+            //Fix the path in Windows---replace backslash with slash
             filePath = filePath.replace(/\\/g, '/')
           }
 
-          //修复window下 \ 问题
+          //Fix the path in Windows---replace backslash with slash
           filePath = bucketInfo.key ? (bucketInfo.key.replace(/(\/*$)/g, '') +'/'+ filePath ) : filePath;
 
 
           if (fs.statSync(absPath).isDirectory()) {
-            //创建目录
+            //Create folder
             ossSvs2.createFolder(bucketInfo.region, bucketInfo.bucket, filePath+ '/').then(function(){
-              //判断是否刷新文件列表
+              //Checks if need to refresh the list
               checkNeedRefreshFileList(bucketInfo.bucket, filePath+ '/');
             });
 
-            //递归遍历目录
+            //Recurcively iterate folder
             // var t = [];
             // var arr = fs.readdirSync(absPath);
             // arr.forEach(function (fname) {
@@ -233,7 +233,7 @@ angular.module('web')
             });
 
           } else {
-            //文件
+            //file
             var job = createJob(authInfo, {
               region: bucketInfo.region,
               from: {
@@ -257,7 +257,7 @@ angular.module('web')
       }
 
       /**
-      * 创建单个job
+      * Create a single job
       * @param  auth { id, secret}
       * @param  opt   { region, from, to, progress, checkPoints, ...}
       * @param  opt.from {name, path}
@@ -299,7 +299,7 @@ angular.module('web')
       }
 
       /**
-       * 保存进度
+       * save the progress
        */
       function saveProg() {
         DelayDone.delayRun('save_upload_prog', 1000, function () {
@@ -334,7 +334,7 @@ angular.module('web')
       }
 
       /**
-       * 获取保存的进度
+       * save the progress
        */
       function loadProg() {
         try {
@@ -345,7 +345,7 @@ angular.module('web')
         return JSON.parse(data ? data.toString() : '[]');
       }
 
-      //上传进度保存路径
+      //get the path for saving the progress
       function getUpProgFilePath() {
         var folder = path.join(os.homedir(), '.oss-browser');
         if(!fs.existsSync(folder)){

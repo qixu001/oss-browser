@@ -4,7 +4,7 @@
     <div class="btn-group" role="group">
       <button ng-disabled="currentAuthInfo.id.indexOf('STS.')==0" type="button" class="btn btn-default btn-sm" ng-click="showAddBucket()">
         <i class="glyphicon glyphicon-plus text-success"></i>
-        <!-- 新建 Bucket -->
+        <!-- Create Bucket -->
         {{'bucket.add'|translate}}
       </button>
     </div>
@@ -13,7 +13,7 @@
     <div class="btn-group" role="group"  ng-if="ref.isBucketList" >
       <!-- <button type="button" class="btn btn-default btn-sm" ng-disabled="!bucket_sel.item"
       ng-click="goIn(bucket_sel.item.name)">
-          <i class="fa fa-arrow-right"></i> 进入
+          <i class="fa fa-arrow-right"></i> Go
       </button> -->
 
 
@@ -21,14 +21,14 @@
         ng-click="showBucketMultipart(bucket_sel.item)">
             <i class="fa fa-copy"></i>
             {{'bucket.multipart'|translate}}
-            <!-- 碎片 -->
+            <!-- multipart -->
         </button>
 
         <button type="button" class="btn btn-default btn-sm" ng-disabled="!bucket_sel.item"
                 ng-click="showUpdateBucket(bucket_sel.item)">
             <i class="fa fa-shield text-success"></i>
             {{'acl'|translate}}
-            <!-- ACL权限 -->
+            <!-- ACL permission -->
         </button>
 
         <button type="button" class="btn btn-default btn-sm" ng-disabled="!bucket_sel.item"
@@ -44,7 +44,7 @@
 
     <div class="btn-group" role="group">
       <button type="button" class="btn btn-default btn-sm dropdown-toggle" ng-disabled="!bucket_sel.item" data-toggle="dropdown">
-        <!-- 更多 -->
+        <!-- More -->
         {{'more'|translate}}
         <span class="caret"></span>
       </button>
@@ -53,7 +53,7 @@
           <a href=""
              ng-disabled="!bucket_sel.item"
              ng-click="showGrantToken(bucket_sel.item)">
-              <i class="fa fa-shield text-warning"></i> 生成授权码
+              <i class="fa fa-shield text-warning"></i> Generates the auth token
           </a>
         </li> -->
         <li>
@@ -62,7 +62,7 @@
           ng-click="showDeleteBucket(bucket_sel.item)">
               <i class="fa fa-remove text-danger"></i>
               {{'delete'|translate}}
-              <!-- 删除 -->
+              <!-- delete-->
           </a>
         </li>
       </ul>

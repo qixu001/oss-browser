@@ -28,17 +28,17 @@ angular.module('web')
         getContent: getContent,
         saveContent: saveContent,
 
-        //重命名
+        // rename
         moveFile: moveFile,
-        //复制，移动
+        // copy, move
         copyFiles: copyFiles,
         stopCopyFiles: stopCopyFiles,
 
-        //删除
+        //delete
         deleteFiles: deleteFiles,
         stopDeleteFiles: stopDeleteFiles,
 
-        //碎片
+        //multipart
         listAllUploads: listAllUploads,
         abortAllUploads: abortAllUploads,
 
@@ -103,11 +103,11 @@ angular.module('web')
       }
 
       /**
-      * 批量删除文件或目录
+      * delete files or folder
       * @param region {string}
       * @param bucket {string}
       * @param items   {array}  item={path,isFolder}
-      * @param progCb  {function} 可选， 进度回调  (current,total)
+      * @param progCb  {function} optional, progress callback  (current,total)
       */
       function deleteFiles(region, bucket, items, progCb){
 
@@ -160,7 +160,7 @@ angular.module('web')
               listAllFiles(region, bucket, item.path).then(function(arr2){
 
                 progress.total += arr2.length;
-                //删除所有文件
+                //delete all files
                 delArr(arr2, function(terr2){
 
                   if(stopDeleteFilesFlag){
@@ -169,16 +169,16 @@ angular.module('web')
                   }
 
                   if(terr2) terr = terr.concat(terr2);
-                  //删除目录本身
+                  // delete the folder itself
                   delFile(item);
                 });
               }, function(err){
-                //删除目录本身
+                //delete the folder itself
                 delFile(item);
               });
             }
             else{
-              //删除文件
+              // delete files
               delFile(item);
             }
 
@@ -219,13 +219,13 @@ angular.module('web')
         stopCopyFilesFlag = true;
       }
       /**
-      * 批量复制或移动文件
-      * @param retion {string} 要求相同region
-      * @param items {array} 需要被复制的文件列表，可能为folder，可能为file
-      * @param target {object} {bucket,key} 目标目录路径
-      * @param progFn {Function} 进度回调  {current:1, total: 11, errorCount: 0}
-      * @param removeAfterCopy {boolean} 移动flag，复制后删除。 默认false
-      * @param renameKey {string} 重命名目录的 key。
+      * copy files or move files
+      * @param retion {string} requires same region
+      * @param items {array} the source files to copy--could be folder or file
+      * @param target {object} {bucket,key} target path
+      * @param progFn {Function} progress callback  {current:1, total: 11, errorCount: 0}
+      * @param removeAfterCopy {boolean} moving flag，delete after the copy. By default is false.
+      * @param renameKey {string} rename folder's key
       */
       function copyFiles(region, items, target, progFn, removeAfterCopy, renameKey){
 
@@ -236,7 +236,7 @@ angular.module('web')
         };
         stopCopyFilesFlag = false;
 
-        //入口
+        //entry point
         var df = $q.defer();
         digArr(items, target, renameKey, function(terr){
           df.resolve(terr);
@@ -270,7 +270,7 @@ angular.module('web')
           });
         }
 
-        //打平，一条一条 copy
+        //flaten files and copy one by one
         function doCopyOssFiles(bucket, pkey, arr, target, fn){
           var len = arr.length;
           var c= 0;
@@ -382,7 +382,7 @@ angular.module('web')
                 }
                 else{
                   if(removeAfterCopy && terr.length==0){
-                    //移动全部成功， 删除目录
+                    //Moves succeed. Delete the folder
                     client.deleteObject({Bucket: source.bucket, Key: source.path}, function(err){
                       $timeout(function(){
                         fn(t);
@@ -476,7 +476,7 @@ angular.module('web')
         }
       }
 
-      //移动文件，重命名文件
+      //move and rename files
       function moveFile(region, bucket, oldKey, newKey, isCopy){
         var df = $q.defer();
         var client = getClient({region:region, bucket:bucket});
@@ -484,7 +484,7 @@ angular.module('web')
           Bucket: bucket,
           Key: newKey,
           CopySource: '/'+bucket+'/'+encodeURIComponent(oldKey),
-          MetadataDirective: 'REPLACE'     // 'REPLACE' 表示覆盖 meta 信息，'COPY' 表示不覆盖，只拷贝
+          MetadataDirective: 'REPLACE'     // 'REPLACE' means overwrite meta，'COPY' means not overwrite but just copy
         }, function(err){
           if(err){
             df.reject(err);
@@ -819,7 +819,7 @@ angular.module('web')
             Bucket: bucket,
             Key: key,
             CopySource: '/'+bucket+'/'+encodeURIComponent(key),
-            MetadataDirective: 'REPLACE', //覆盖meta
+            MetadataDirective: 'REPLACE', //overwrite meta
 
             Metadata: metas || {},
 
@@ -907,10 +907,10 @@ angular.module('web')
                   if (data.Restore) {
                     var info = parseRestoreInfo(data.Restore);
                     if (info['ongoing-request'] == 'true') {
-                      item.storageStatus = 2; // '归档文件正在恢复中，请耐心等待...';
+                      item.storageStatus = 2; // 'Archive files are under restoring, please wait a moment...';
                     } else {
                       item.expired_time = info['expiry-date'];
-                      item.storageStatus = 3; // '归档文件，已恢复，可读截止时间
+                      item.storageStatus = 3; // 'Archive files are restored, set the expiry date 
                     }
                   }else{
                     item.storageStatus = 1;
@@ -956,7 +956,7 @@ angular.module('web')
             }
 
             if (result.CommonPrefixes) {
-              //目录
+              //folder
               result.CommonPrefixes.forEach(function (n) {
                 n = n.Prefix;
                 t_pre.push({
@@ -970,7 +970,7 @@ angular.module('web')
             }
 
             if (result['Contents']) {
-              //文件
+              //file
               result['Contents'].forEach(function (n) {
                 n.Prefix = n.Prefix || '';
 
@@ -1002,7 +1002,7 @@ angular.module('web')
       }
 
 
-      //同一时间只能有一个查询，上一个查询如果没有完成，则会被abort
+      //Only one query at a time. If the previous query is not done, it will be aborted.
       var keepListFilesJob;
 
       function listAllFiles(region, bucket, key, folderOnly) {
@@ -1055,7 +1055,7 @@ angular.module('web')
             }
 
             if (result.CommonPrefixes) {
-              //目录
+              //folder
               result.CommonPrefixes.forEach(function (n) {
                 n = n.Prefix;
                 t_pre.push({
@@ -1069,7 +1069,7 @@ angular.module('web')
             }
 
             if (!folderOnly && result['Contents']) {
-              //文件
+              //file
               result['Contents'].forEach(function (n) {
                 n.Prefix = n.Prefix || '';
 
@@ -1268,13 +1268,13 @@ angular.module('web')
 
       function getOssEndpoint(region, bucket) {
         var isHttps = Global.ossEndpointProtocol == 'https:';
-        //通过bucket获取endpoint
+        //get endpoint by bucket name
         if (bucket && $rootScope.bucketMap && $rootScope.bucketMap[bucket]) {
           var endpoint = $rootScope.bucketMap[bucket][$rootScope.internalSupported?'intranetEndpoint':'extranetEndpoint'];
           if (endpoint) return isHttps ? ('https://' + endpoint + ':443') : ('http://' + endpoint);
         }
 
-        //region是domain
+        //region is domain
         if (region.indexOf('.') != -1) {
           if (region.indexOf('http') != 0) {
             region = Global.ossEndpointProtocol == 'https:' ? ('https://' + region + ':443') : ('http://' + region);

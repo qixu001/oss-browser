@@ -1,27 +1,27 @@
 # test
 
-## 使用到的测试框架
+## The test framework used
 
 [spectron](https://github.com/electron/spectron#application-api)
 
 [AVA](https://github.com/avajs/ava)
 
-## 启动测试
+## Start testing
 
-* 1. 之前需要先build
+* 1. build first
 
 ```
 npm run linux64   # scope: linux64, mac or win64
 ```
 
-* 2. 然后先打开，填入有效AK，登录一遍。然后关闭应用。
+* 2. Open OSS browser，input valid AK and login. Then close the app
 
-* 3. 开始测试：
+* 3. Start testing：
 
 ```
 npm test
 ```
 
-## 帮助文档
+## help document
 
 [selectors](http://webdriver.io/guide/usage/selectors.html)

@@ -30,7 +30,7 @@ angular.module('web')
 
     function removeFav(item){
       Fav.remove(item.url);
-      Toast.warning(T('bookmarks.delete.success')); //删除书签成功
+      Toast.warning(T('bookmarks.delete.success')); // bookmarks deletion succeeded
       refresh();
     }
 

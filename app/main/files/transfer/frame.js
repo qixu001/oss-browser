@@ -27,34 +27,34 @@ function($scope ,$translate,ossUploadManager,ossDownloadManager, Toast, safeAppl
 
 
    $scope.netInit().then(function(){
-     //确认是否可以使用内部网络，再初始化
+     //Make sure the internal network is usable, then initialize
      ossUploadManager.init($scope);
      ossDownloadManager.init($scope);
    });
 
 
    /**
-    * 下载
-    * @param fromOssPath {array}  item={region, bucket, path, name, size=0, isFolder=false}  有可能是目录，需要遍历
+    * Download
+    * @param fromOssPath {array}  item={region, bucket, path, name, size=0, isFolder=false}  can be folder, iteration is needed
     * @param toLocalPath {string}
     */
    function downloadFilesHandler(fromOssPath, toLocalPath) {
-     Toast.info(T('download.addtolist.on')); //'正在添加到下载队列'
+     Toast.info(T('download.addtolist.on')); //'Adding to the download queue'
      ossDownloadManager.createDownloadJobs(fromOssPath, toLocalPath, function(isCancelled){
-       Toast.info(T('download.addtolist.success')); //'已全部添加到下载队列'
+       Toast.info(T('download.addtolist.success')); //'All have been added to the download queue'
        $scope.toggleTransVisible(true);
        $scope.transTab = 2;
      });
    }
    /**
     * 上传
-    * @param filePaths []  {array<string>}  有可能是目录，需要遍历
+    * @param filePaths []  {array<string>}  could be folder, iteration is needed
     * @param bucketInfo {object} {bucket, region, key}
     */
    function uploadFilesHandler(filePaths, bucketInfo) {
-      Toast.info(T('upload.addtolist.on')); //'正在添加到上传队列'
+      Toast.info(T('upload.addtolist.on')); //'Adding to the upload queue'
       ossUploadManager.createUploadJobs(filePaths, bucketInfo, function(isCancelled){
-        Toast.info(T('upload.addtolist.success')); //'已全部添加到上传队列'
+        Toast.info(T('upload.addtolist.success')); //'All have been added to the upload queue'
         $scope.toggleTransVisible(true);
         $scope.transTab = 1;
       });

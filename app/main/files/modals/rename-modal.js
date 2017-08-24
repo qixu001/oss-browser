@@ -32,9 +32,9 @@ angular.module('web')
           //console.log(item.path, newPath)
           if(item.path==newPath)return;
 
-          var title = T('whetherCover.title'); //是否覆盖
-          var msg1 = T('whetherCover.message1'); //已经有同名目录，是否覆盖?
-          var msg2 = T('whetherCover.message2'); //已经有同名文件，是否覆盖?
+          var title = T('whetherCover.title'); //overwrite?
+          var msg1 = T('whetherCover.message1'); //has the same folder, overwrite?
+          var msg2 = T('whetherCover.message2'); //has the same file, overwrite?
 
           $scope.isLoading=true;
           ossSvs2.checkFolderExists(moveTo.region,moveTo.bucket, newPath).then(function(has){
@@ -59,7 +59,7 @@ angular.module('web')
 
           //suffix
           // if(path.extname(item.path)!=path.extname(newPath)){
-          //   if(!confirm('确定要修改后缀名吗?')){
+          //   if(!confirm('Confirm to change the suffix?')){
           //     return;
           //   }
           // }
@@ -81,8 +81,8 @@ angular.module('web')
 
       }
       function renameFile(newPath){
-        var onMsg = T('rename.on');  //正在重命名...
-        var successMsg = T('rename.success'); //重命名成功
+        var onMsg = T('rename.on');  //Renaming...
+        var successMsg = T('rename.success'); //Rename succeeded
 
         Toast.info(onMsg);
         ossSvs2.moveFile(currentInfo.region, currentInfo.bucket, item.path, newPath, isCopy).then(function(){
@@ -96,7 +96,7 @@ angular.module('web')
       }
 
       function showMoveFolder(newPath){
-        var successMsg = T('rename.success'); //重命名成功
+        var successMsg = T('rename.success'); //Rename succeeded
         $modal.open({
           templateUrl: 'main/files/modals/move-modal.html',
           controller: 'moveModalCtrl',

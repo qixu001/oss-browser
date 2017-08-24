@@ -5,7 +5,7 @@
     </button>
     <h4 class="modal-title text-warning">
       <i class="fa fa-sheild"></i>
-      <!-- 设置ACL权限 -->
+      <!-- Set ACL -->
       {{'acl.update.title'|translate}}
     </h4>
   </div>
@@ -13,14 +13,14 @@
 
     <div class="form-group">
       <label class="col-sm-2 control-label">
-        <!-- 权限: -->
+        <!-- permission: -->
         {{'privilege'|translate}}:
       </label>
       <div class="col-sm-9">
           <select ng-model="info.acl" class="form-control input-sm">
               <option value="default">
                 {{'aclType.default'|translate}}
-                <!-- 继承Bucket -->
+                <!-- inherit Bucket -->
               </option>
               <option value="private">{{'aclType.private'|translate}}</option>
               <option value="public-read">{{'aclType.public-read'|translate}}</option>
@@ -32,9 +32,9 @@
     </div>
 
     <!-- <div class="f8 text-muted">
-      <li>私有：对object的所有访问操作需要进行身份验证
-      <li>公共读：对object写操作需要进行身份验证；可以对object进行匿名读
-      <li>公共读写：所有人都可以对object进行读写操作
+      <li>private：needs authN and authZ for all access
+      <li>public read：needs authN and authZ for object write; read could be anonymous.
+      <li>public read and write：All user could read write the object
     </div> -->
     <div class="f9 text-muted">
       <li>{{'aclType.private.message'|translate}}
@@ -49,12 +49,12 @@
     <button type="submit" class="btn btn-success btn-sm">
       <i class="glyphicon glyphicon-ok"></i>
       {{'ok'|translate}}
-      <!-- 确定 -->
+      <!-- OK -->
     </button>
     <button type="button" class="btn btn-default btn-sm" ng-click="cancel()">
       <i class="glyphicon glyphicon-remove"></i>
       {{'cancel'|translate}}
-      <!-- 取消 -->
+      <!-- Cancel -->
     </button>
   </div>
 </form>

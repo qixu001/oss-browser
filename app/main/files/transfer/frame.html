@@ -11,14 +11,14 @@
       <ul class="nav nav-tabs trans-nav">
           <li role="presentation" ng-class="{active:transTab==1}">
             <a href="#" ng-click="transTab=1">
-              <!-- 上传 -->
+              <!-- Upload -->
               {{'upload'|translate}}
                 <label class="badge">{{totalNum.upDone}}/{{lists.uploadJobList.length}}</label>
             </a>
           </li>
           <li role="presentation" ng-class="{active:transTab==2}">
             <a href="#" ng-click="transTab=2">
-              <!-- 下载 -->
+              <!-- Download -->
               {{'download'|translate}}
               <label class="badge">{{totalNum.downDone}}/{{lists.downloadJobList.length}}</label>
             </a>

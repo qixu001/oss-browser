@@ -20,7 +20,7 @@ angular.module('web')
               df.reject(err);
             }
             else{
-              //登录成功
+              //Login successfully
               AuthInfo.save(data);
               df.resolve();
             }
@@ -31,15 +31,15 @@ angular.module('web')
             
             if(err){
               if (err.code == 'AccessDeniedError') {
-                //登录成功
+                //Login denied
                 AuthInfo.save(data);
                 df.resolve();
               } else {
-                //失败
+                // failure
                 df.reject(err);
               }
             }else{
-              //登录成功
+              // Login successfully
               AuthInfo.save(data);
               df.resolve();
             }

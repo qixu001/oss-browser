@@ -61,10 +61,10 @@ angular.module('web')
         angular.forEach(metaItems,function(n){
           if(n.key && n.value)metas[n.key]=n.value;
         });
-        Toast.info(T('setting.on')); //'正在设置..'
+        Toast.info(T('setting.on')); //'Setting..'
 
         ossSvs2.setMeta(currentInfo.region, currentInfo.bucket, item.path, headers, metas).then(function(result){
-          Toast.success(T('setting.success')); //'设置成功'
+          Toast.success(T('setting.success')); //'setting succeeded'
           cancel();
 
         });

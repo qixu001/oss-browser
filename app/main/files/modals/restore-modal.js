@@ -21,11 +21,11 @@ angular.module('web')
             var info = parseRestoreInfo(data.Restore);
             if(info['ongoing-request']=='true'){
               $scope.info.type = 2;
-              //$scope.info.msg = '正在恢复中，请耐心等待！';
+              //$scope.info.msg = 'The file is being restored, please wait！';
             }else{
               $scope.info.type = 3;
               $scope.info.expiry_date = info['expiry-date'];
-              //$scope.info.msg = '可读截止时间：'+ info['expiry-date']
+              //$scope.info.msg = 'Expiration time：'+ info['expiry-date']
             }
           }
           else{
@@ -58,9 +58,9 @@ angular.module('web')
 
         var days = $scope.info.days;
 
-        Toast.info(T('restore.on'));//'提交中...'
+        Toast.info(T('restore.on'));//'submit restore...'
         ossSvs2.restoreFile(currentInfo.region, currentInfo.bucket, item.path, days).then(function(){
-          Toast.success(T('restore.success')); //'恢复请求已经提交'
+          Toast.success(T('restore.success')); //'restore request has been submitted'
           callback();
           cancel();
         });

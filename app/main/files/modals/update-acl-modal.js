@@ -26,7 +26,7 @@ angular.module('web')
         if (!form.$valid)return;
         var acl = $scope.info.acl;
         ossSvs2.updateACL(currentInfo.region, currentInfo.bucket, item.path, acl).then(function(res){
-          Toast.success(T('acl.update.success')); //'修改ACL权限成功'
+          Toast.success(T('acl.update.success')); //'ACL update succeeded'
           cancel();
         });
       }

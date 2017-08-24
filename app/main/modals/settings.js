@@ -28,7 +28,7 @@ angular.module('web')
       tid=$timeout(function(){
         if(!form1.$valid)return;
         settingsSvs[key].set( $scope.set[key] );
-        Toast.success(T('settings.success')); //已经保存设置
+        Toast.success(T('settings.success')); // setting is saved
 
       },ttl||100);
 
@@ -40,8 +40,8 @@ angular.module('web')
     }
 
     function testMail(){
-      var title = T('mail.test.title'); //测试邮件
-      var message = T('mail.test.message', {from: $scope.set.mailSmtp.from}); //将发送测试邮件到
+      var title = T('mail.test.title'); //test mail
+      var message = T('mail.test.message', {from: $scope.set.mailSmtp.from}); //send email to 
       Dialog.confirm(title, message, function(b){
         if(!b)return;
         Mailer.send({
@@ -50,7 +50,7 @@ angular.module('web')
           html: 'test'
         }).then(function(result){
           console.log(result)
-          Toast.success(T('mail.test.success')); // 邮件发送成功');
+          Toast.success(T('mail.test.success')); // Email is sent');
         },function(err){
           console.error(err);
           Toast.error(err);

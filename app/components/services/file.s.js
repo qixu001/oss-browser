@@ -6,7 +6,7 @@ angular.module('web')
 
     return {
       /**
-      * 根据后缀判断
+      * get type from the extension file name
       * @param  item = {name, size}
       * @return obj = {type, ...}
       *     type: [picture|code|others|doc|video|audio]

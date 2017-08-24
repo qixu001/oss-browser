@@ -58,7 +58,7 @@ angular.module('web')
       try{
         fs.writeFileSync(getFavFilePath(), JSON.stringify(arr));
       }catch(e){
-        Toast.error('保存书签失败:'+ e.message);
+        Toast.error('Failed to save the bookmark:'+ e.message);
       }
     }
 
@@ -74,7 +74,7 @@ angular.module('web')
     }
 
 
-    //下载进度保存路径
+    // The path to store the checkpoint
     function getFavFilePath() {
       var folder = path.join(os.homedir(), '.oss-browser');
       if(!fs.existsSync(folder)){

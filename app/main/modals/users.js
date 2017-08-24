@@ -92,7 +92,7 @@ angular.module('web')
               dig(arr, function(n){
                 return ramSvs.deleteAccessKey(item.UserName, n.AccessKeyId);
               }).then(function(){
-                //删除
+                //Delete
                 ramSvs.deleteUser(item.UserName).then(function(){
                   Toast.success(T('user.delete.success'));
                   refresh();

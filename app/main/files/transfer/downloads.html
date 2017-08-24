@@ -2,7 +2,7 @@
     <header class="pd4 text-right" style="border-bottom:1px solid #ddd;">
 
         <div class="pull-left" style="position:relative">
-          <!-- placeholder: 根据名称或状态搜索 -->
+          <!-- placeholder: search by name or status -->
           <input type="text"  cleanable-input placeholder="{{'transframe.search.placeholder'|translate}}"
            class="form-control input-sm" style="width:150px;" ng-model="sch.downname">
         </div>
@@ -12,23 +12,23 @@
           <a href="" ng-if="totalNum.downFailed>0" class="btn btn-link btn-sm" style="text-decoration:none" ng-click="sch.downname='failed'"><span class="text-danger"><i class="fa fa-remove"></i> {{totalNum.downFailed}}</span></a>
         </div>
 
-        <!-- 启动全部 -->
+        <!-- Start all -->
         <button ng-disabled="allActionBtnDisabled" type="button" class="btn btn-default btn-sm" ng-click="startAll()"
         uib-tooltip="{{'start.all'|translate}}" tooltip-append-to-body="true">
             <span class=""><i class="glyphicon glyphicon-play"></i></span>
         </button>
 
-        <!-- 暂停全部 -->
+        <!-- Pause all -->
         <button ng-disabled="allActionBtnDisabled" type="button" class="btn btn-default btn-sm" ng-click="stopAll()"
         uib-tooltip="{{'pause.all'|translate}}" tooltip-append-to-body="true">
             <span class=""><i class="glyphicon glyphicon-pause"></i></span>
         </button>
-        <!-- 清空已完成 -->
+        <!-- Clear finished -->
         <button type="button" class="btn btn-default btn-sm" ng-click="clearAllCompleted()"
         uib-tooltip="{{'clear.finished'|translate}}" tooltip-append-to-body="true">
             <span class=""><i class="glyphicon glyphicon-trash"></i></span>
         </button>
-        <!-- 清空所有 -->
+        <!-- Clear all -->
         <button type="button" class="btn btn-default btn-sm" ng-click="clearAll()"
         uib-tooltip="{{'clear.all'|translate}}" tooltip-append-to-body="true">
             <span class=""><i class="text-danger glyphicon glyphicon-trash"></i></span>

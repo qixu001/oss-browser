@@ -17,7 +17,7 @@ arr.forEach(n=>{
 vs.sort(compareVersion);
 
 vs.forEach(version=>{
-  var str = `|${version}|[下载](http://luogc.oss-cn-hangzhou.aliyuncs.com/oss-browser-publish/${version}/oss-browser-win32-x64.zip) | [下载](http://luogc.oss-cn-hangzhou.aliyuncs.com/oss-browser-publish/${version}/oss-browser.dmg) | [下载](http://luogc.oss-cn-hangzhou.aliyuncs.com/oss-browser-publish/${version}/oss-browser-linux-x64.zip) |`;
+  var str = `|${version}|[Download](http://luogc.oss-cn-hangzhou.aliyuncs.com/oss-browser-publish/${version}/oss-browser-win32-x64.zip) | [Download](http://luogc.oss-cn-hangzhou.aliyuncs.com/oss-browser-publish/${version}/oss-browser.dmg) | [Download](http://luogc.oss-cn-hangzhou.aliyuncs.com/oss-browser-publish/${version}/oss-browser-linux-x64.zip) |`;
  t.push(str);
 });
 

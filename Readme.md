@@ -1,161 +1,165 @@
 
 # OSS Browser
 
-OSS Browser 提供类似windows资源管理器功能。用户可以很方便的浏览文件，上传下载文件，支持断点续传等。
+OSS Browser provides the similar functionality of Windows Resource Manager, which could enable user browse files, upload or download files with resumable upload/download support,etc.
 
-本工具使用开源框架 Angular 1.x + [Electron](http://electron.atom.io/)制作。
+The tool is based on Angular 1.x + [Electron](http://electron.atom.io/).
 
-> Electron 框架可以让你使用 JavaScript，HTML 和 CSS 构建跨平台的桌面应用程序。它是基于node.js 和 Chromium 开源项目。Electron 可以打包出跨平台的程序，运行在 Mac，Windows 和 Linux 上。
-
-
-## 1. 客户端下载：
-
-最新版本`1.2.2`，下载地址如下，解压即可使用。
-
-> [<h4>Window x64版下载</h4>](http://luogc.oss-cn-hangzhou.aliyuncs.com/oss-browser-publish/1.2.2/oss-browser-win32-x64.zip)
-
-> [<h4>Mac 版下载</h4>](http://luogc.oss-cn-hangzhou.aliyuncs.com/oss-browser-publish/1.2.2/oss-browser.dmg)
-
-> [<h4>Ubuntu x64版</h4>](http://luogc.oss-cn-hangzhou.aliyuncs.com/oss-browser-publish/1.2.2/oss-browser-linux-x64.zip)
-
-其他版本暂不提供，可以自行build。
+> Electron framework could enable you develop desktop apps with Javascript, Html and CSS. And it's bsaed on nodejs and Chromium. Electron could generate package running on Mac, Windows and Linux.
 
 
-> [旧版本下载](all-releases.md)
+## 1. Binary Download：
+
+Latest version`1.2.2`, below are the download addresses. Just download and unzip, and you're ready to go!
+
+> [<h4>Window x64 Download</h4>](http://luogc.oss-cn-hangzhou.aliyuncs.com/oss-browser-publish/1.2.2/oss-browser-win32-x64.zip)
+
+> [<h4>Mac Download</h4>](http://luogc.oss-cn-hangzhou.aliyuncs.com/oss-browser-publish/1.2.2/oss-browser.dmg)
+
+> [<h4>Ubuntu x64 Download</h4>](http://luogc.oss-cn-hangzhou.aliyuncs.com/oss-browser-publish/1.2.2/oss-browser-linux-x64.zip)
+
+For other versions, please build from the source code if you need it.
 
 
-## 2. 功能介绍:
+> [Previous version Download](all-releases.md)
+
+
+## 2. Features introduction:
 
 ```
-功能Map
-  |-- 登录：只需配置AK。
-  |-- Bucket管理，新建bucket，删除bucket，bucket权限修改，碎片管理。
-       |-- 文件管理：目录（包括bucket）和文件的增删改查， 复制, 文件预览等。
-             |-- 文件传输任务管理： 上传下载，断点续传。
-  |-- 地址栏功能（支持oss://协议URL，浏览历史前进后退，保存书签）
-  |-- 授权功能： 简化RAM授权。
+Features Map
+  |-- Login：Just need AK。
+  |-- Bucket Management，Create bucket，Delete bucket，bucket permission update，multipart management.
+       |-- File Management：Folder（Includes bucket） and file CRUD, copy and file preview.
+             |-- File Transfer Task Management： Resumable file upload or download.
+  |-- Address Bar: Supports oss://protocol URL, brwose history, forward, back, bookmarks.
+  |-- Permission Management: Simplify the RAM permission assignment.
 ```
 
-特色功能：
+Unique Features
 
-1. 地址栏功能：支持oss://协议URL，浏览历史前进后退，保存书签。
+1. Address bar：Supports oss://protocol URL, brwose history, forward, back, bookmarks.
 
-2. 预览和编辑功能：图片可以预览，文本直接可以编辑。
-
-
-### (1) AK登录
-
-![AK登录](preview/login.png)
-
-* 子用户登录可以指定预设OSS路径，配合子用户授权使用。
-
-![临时授权码登录](preview/auth-token-login.png)
-
-* 临时授权码登录。
+2. File preview and edit: Support previewing image file and editting text file. 
 
 
-### (2) Bucket列表
+### (1) Login with AccessKeyId and Access Key Secret
 
-![Bucket列表](preview/bucket-list.png)
+![AK Login](preview/login.png)
+
+* Sub user login could specify the OSS path together with the auth-token.
+
+![Auth Token Login](preview/auth-token-login.png)
+
+* Token Login.
 
 
-### (3) 文件列表 (支持拖拽上传)
+### (2) Bucket List
 
-![文件列表](preview/file-list.png)
+![BucketList](preview/bucket-list.png)
 
-### (4) 授权给子用户 & 子用户登录
 
-![授权给子用户](preview/subuser-grant.png)
+### (3) File List (support drag and drop)
 
-![子用户登录](preview/subuser.png)
+![File List](preview/file-list.png)
 
-### (5) 归档bucket支持
+### (4) Permission Grant to sub users and sub users login
 
-![新建归档bucket](preview/create-archive-bucket.png)
+![Sub User Permission Grant](preview/subuser-grant.png)
+
+![Sub User Login](preview/subuser.png)
+
+### (5) Support Archieve Bucket
+
+![Create an Archive Bucket](preview/create-archive-bucket.png)
 
 ![restore](preview/need-restore.png)
 
-* 归档bucket下所有文件均为Archive存储类型, 需要恢复才能访问。
+* The storage class of files under "Archive bucket" is archieve. Restore is required before the access.
 
 
-## 3. 开发环境搭建
+## 3. Dev environment setup
 
-> 如果你要在此基础上开发，请按照以下步骤进行。
+> If you want to develop based on it, please follow the following instructions.
 
 
-### (1) 安装 node.js 最新版本
+### (1) Install latest version of node.js
 
-官网: https://nodejs.org/
+Official Site: https://nodejs.org/
 
-### (2) 安装cnpm
+### (2) Install cnpm (optional, for Chinese dev only)
 
-官网: https://cnpmjs.org/
+Official Site: https://cnpmjs.org/
 
-cnpm 是 npm（node 包管理工具）的中国镜像，可以提高下载依赖包的效率。
+cnpm is npm's China mirror, which could increase the download speed on dependency packages for Chinese users.
 
-### (3) 在windows系统下，需要安装 windows-build-tools
+### (3) In windows, you need to intall windows-build-tools
 
 ```
+npm i -g windows-build-tools
+or 
 cnpm i -g windows-build-tools
 ```
 
-### (3) 下载代码
+### (3) Dowload source code
 
 ```
 git clone git@github.com:aliyun/oss-browser.git
 ```
 
-安装依赖(请使用cnpm):
+Install dependencies:
 
 ```
+npm i
+or
 cnpm i
 ```
 
 
-### (4) 运行
+### (4) Run
 
 ```
-npm run dev  # 开发模式运行, command+option+i 可用打开调试界面, win或linux按 F12.
+npm run dev  # run at dev mode. type command+option+i to launch debug UI, win or linux uses F12.
 ```
 
-开发模式下，会自动监听源码,如有修改,会自动build 前端代码到dist目录。
+Under dev mode，the source code update is monitored and it will trigger auto build and update the dist directory.
 
 
-### (5) 打包
-
-```
-npm run build  # build前端代码到dist目录
-```
+### (5) Package
 
 ```
-npm run win64  # 打包win64程序， 可选: mac, linux64 等
+npm run build  # build frontend code to dist directory
+```
+
+```
+npm run win64  # Package Win64 apps, you could specify other platform such as mac, linux64 etc.
 ```
 
 
 
-## 4. 代码结构
+## 4. Code Structure
 
 
 ```
 oss-browser/
- |-- app/                 # 前端代码, 采用angular1.x + bootstrap3.x
- |-- node/                # 前端调用的 node 模块
-     |-- crc64/           # crc校验模块，用来校验文件完整性
-     |-- ossstore/        # 上传下载job类
-     |-- i18n/            # 国际化
- |-- vendor/              # 前端 aliyun-sdk 依赖
- |-- node_modules         # node端依赖的模块
- |-- dist                 # 前端临时build出的代码
- |-- build                # electron build 出的应用
- |-- gulpfile.js          # 项目管理文件
- |-- package.json         # 项目描述文件
+ |-- app/                 # Frontend code, uses angular1.x + bootstrap3.x
+ |-- node/                # The node module called by Frontend code
+     |-- crc64/           # crc checksum module, for checking file integrity.
+     |-- ossstore/        # Upload Download job classes
+     |-- i18n/            # globalization
+ |-- vendor/              # Frontend aliyun-sdk dependency
+ |-- node_modules         # node's dependent modules
+ |-- dist                 # Frontend's dist directory
+ |-- build                # electron build directory
+ |-- gulpfile.js          # project management file
+ |-- package.json         # project description file
 ```
 
 
-## 5. 关于贡献
+## 5. About Contribute
 
-* 暂不接受代码贡献，如有建议或发现bug，请直接开issue。
+* Currently we do not encourage code contribution. If you have suggests or find bugs, please open an issue to us. 
 
-## 6. 开源 LICENSE
+## 6. Open Source LICENSE
 
 [Apache License 2.0](LICENSE)

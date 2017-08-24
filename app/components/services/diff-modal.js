@@ -75,7 +75,7 @@ angular.module('web')
             connect: 'align',
             collapseIdentical: true,
 
-            //不可编辑
+            // does not allow editing
             allowEditingOriginals: false,
             revertButtons: false
           });

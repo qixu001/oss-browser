@@ -8,7 +8,7 @@ angular.module('web', ['ui.router',
   .config(['$stateProvider', '$urlRouterProvider', '$translateProvider',
     function ($stateProvider, $urlRouterProvider, $translateProvider) {
 
-      moment.locale('zh-CN');
+      moment.locale('en-US');
 
       $stateProvider
         .state('files', {
@@ -28,7 +28,7 @@ angular.module('web', ['ui.router',
       for (var k in Global.i18n) {
         $translateProvider.translations(k, Global.i18n[k].content);
       }
-      $translateProvider.preferredLanguage('zh-CN');
+      $translateProvider.preferredLanguage('en-US');
     }
   ])
   .run(['$rootScope', '$translate', 'Toast', function ($rootScope, $translate, Toast) {
@@ -57,7 +57,7 @@ angular.module('web', ['ui.router',
         $translate.use(key);
         localStorage.setItem('lang', key);
         $rootScope.langSettings.lang = key;
-        Toast.success($translate.instant('setup.success')); //'已经设置成功'
+        Toast.success($translate.instant('setup.success')); //'setup succeeded'
       }
     };
     $translate.use(lang);

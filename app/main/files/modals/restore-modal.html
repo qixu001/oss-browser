@@ -5,7 +5,7 @@
     </button>
     <h4 class="modal-title text-info">
       <i class="fa fa-edit"></i>
-      <!-- 恢复 -->
+      <!-- restore -->
       {{'restore.title'|translate}}
     </h4>
   </div>
@@ -13,7 +13,7 @@
 
     <div class="form-group">
       <label class="col-sm-2 control-label">
-        <!-- 文件: -->
+        <!-- file: -->
         {{'file'|translate}}:
       </label>
       <div class="col-sm-10 input-md pdt4">oss://{{currentInfo.bucket}}/{{currentInfo.key}}{{item.name}}</div>
@@ -22,11 +22,11 @@
     <div is-loading ng-if="isLoading"></div>
 
     <div ng-if="!isLoading && info.type==2" class="alert alert-warning">
-      <!-- 正在恢复中，请耐心等待！ -->
+      <!-- restoring, please wait！ -->
       {{'restore.onprogress'|translate}}
     </div>
      <div ng-if="!isLoading && info.type==3" class="alert alert-success">
-       <!-- 可读截止时间： -->
+       <!-- restore expiration time： -->
        {{'restore.message2'|translate}}:
        {{info['expiry_date']}}</div>
 
@@ -35,7 +35,7 @@
   'has-success': form1.name.$dirty && form1.name.$valid}">
 
       <label class="col-sm-2 control-label" for="days">
-        <!-- 恢复天数: -->
+        <!-- restore days: -->
         {{'restore.days'|translate}}:
       </label>
       <div class="col-sm-8">
@@ -50,12 +50,12 @@
   <div class="modal-footer">
     <button ng-disabled="isLoading || info.msg" type="submit" class="btn btn-success btn-sm">
       <i class="glyphicon glyphicon-ok"></i>
-      <!-- 确定 -->
+      <!-- OK -->
       {{'ok'|translate}}
     </button>
     <button type="button" class="btn btn-default btn-sm" ng-click="cancel()">
       <i class="glyphicon glyphicon-remove"></i>
-      <!-- 取消 -->
+      <!-- Cancel -->
       {{'cancel'|translate}}
     </button>
   </div>

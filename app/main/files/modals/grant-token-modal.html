@@ -4,7 +4,7 @@
       <span aria-hidden="true">&times;</span>
     </button>
     <h4 class="modal-title text-danger">
-      <!-- 生成授权码 -->
+      <!-- Generates auth token -->
       {{'genAuthToken.title'|translate}}
     </h4>
   </div>
@@ -22,18 +22,18 @@
 
     <div class="clearfix form-group">
       <label class="col-sm-12 control-label">
-        <!-- 的权限: -->
+        <!-- permission: -->
         {{'genAuthToken.message2'|translate}}
       </label>
       <div class="col-sm-12">
         <label class="radio-inline">
           <input type="radio" name="ptype" ng-click="policyChange()" ng-model="grant.privType" id="inlineRadio1" value="readOnly">
             {{'privilege.readonly'|translate}}
-          <!-- 只读权限 -->
+          <!-- read only -->
         </label>
         <label class="radio-inline">
           <input type="radio" name="ptype" ng-click="policyChange()" ng-model="grant.privType" id="inlineRadio2" value="all">
-          <!-- 读写权限 -->
+          <!-- read write -->
           {{'privilege.readwrite'|translate}}
         </label>
       </div>
@@ -42,11 +42,11 @@
     <div class="clearfix form-group">
       <div class="col-sm-12">
         <a href="" ng-show='show_policy!=1' ng-click="show_policy=1" class="">
-          <!-- [查看Policy] -->
+          <!-- [lookupPolicy] -->
           [{{'simplePolicy.lb3.1'|translate}}]
         </a>
         <a href="" ng-show='show_policy==1' ng-click="show_policy=0" class="">
-          <!-- [隐藏Policy] -->
+          <!-- [hide Policy] -->
           [{{'simplePolicy.lb3.2'|translate}}]
         </a>
       </div>
@@ -67,7 +67,7 @@
 
     <div class="clearfix form-group" ng-class="{'has-error':  !form1.durSeconds.$valid }">
       <label class="col-sm-12 control-label">
-        <!-- 有效时长(秒): -->
+        <!-- effective duration(sec): -->
         {{'effective.duration'|translate}}({{'unit.second'|translate}})
       </label>
       <div class="col-sm-12">
@@ -83,9 +83,9 @@
 
     <div class="clearfix form-group" ng-class="{'has-error':  !form1.roleArn.$valid }">
       <label class="col-sm-12 control-label">
-        <!-- 还需要指定一个角色:  -->
+        <!-- A rule is to be specified:  -->
         {{'genAuthToken.message3.1'|translate}}:
-          <!-- (这个角色需要至少有这个{{isBucket?"Bucket":'目录'}}的{{grant.privType=='all'?'可写':'只读'}}权限) -->
+          <!-- (The role at least have this {{isBucket?"Bucket":'folder'}} {{grant.privType=='all'?'readwrite':'readonly'}} permission) -->
         (<small class="text-muted">
           {{'genAuthToken.message3.2'|translate:message5}}
         </small>)
@@ -105,7 +105,7 @@
 
     <div ng-if="token" class="clearfix form-group">
       <label class="col-sm-12 control-label text-success">
-        <!-- 生成的授权码: -->
+        <!-- The auth token generated: -->
         {{'genAuthToken.message4'|translate}}:
       </label>
 
@@ -115,16 +115,16 @@
           <input type="text" id="genTokenTa" ng-model="token"  class="input-md form-control"/>
           <span class="input-group-btn">
             <a href="" class="btn btn-info" clipboard-button target="'#genTokenTa'">
-              <!-- 点击复制 -->
+              <!-- click to copy -->
               {{'click.copy'|translate}}
             </a>
           </span>
         </div>
 
         <small>
-          <!-- (使用上面生成的授权码登录OSS浏览器，
-          可以达到只拥有[{{item.name}}]这个{{isBucket?"Bucket":'目录'}}的{{grant.privType=='all'?'读写':'只读'}}权限的效果,
-          有效期至{{origin_token.Credentials.Expiration|timeFormat}}秒。) -->
+          <!-- (use the auth token above to login OSS browser, it could make sure the user only have
+          [{{item.name}}] this {{isBucket?"Bucket":'folder'}} {{grant.privType=='all'?'readwrite':'readonly'}} permission,
+          with the expiration {{origin_token.Credentials.Expiration|timeFormat}} seconds.) -->
           ({{'genAuthToken.message5'|translate:message5}})
         </small>
       </div>
@@ -142,13 +142,13 @@
   <div class="modal-footer">
     <button type="submit" ng-disabled="!form1.$valid" class="btn btn-success btn-sm">
       <i class="glyphicon glyphicon-ok"></i>
-      <!-- {{token?'重新':'确定'}}生成 -->
+      <!-- {{token?'Regenerate':'OK'}} -->
       <span>{{(token?'genAuthToken.message6.2':'genAuthToken.message6.1')|translate}}</span>
     </button>
 
     <button type="button" class="btn btn-default btn-sm" ng-click="cancel()">
       <i class="glyphicon glyphicon-remove"></i>
-      <!-- 关闭 -->
+      <!-- Close -->
       {{'close'|translate}}
     </button>
   </div>

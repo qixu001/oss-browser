@@ -57,7 +57,7 @@
               <a href="" ng-if="!item.toggle" ng-click="item.toggle=!item.toggle">{{'show'|translate}}</a>
             </div>
             <div ng-if="!item.AccessKeySecret" class="text-muted">
-               <!-- 无法获取 -->
+               <!-- cannot get key secret -->
                {{'can.not.get.accessKeySecret'|translate}}
             </div>
           </td>
@@ -77,7 +77,7 @@
 
     <button type="button" class="btn btn-default btn-sm" ng-click="cancel()">
       <i class="glyphicon glyphicon-remove"></i>
-      <!-- 关闭 -->
+      <!-- Close -->
       {{'close'|translate}}
     </button>
   </div>

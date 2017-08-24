@@ -1,6 +1,6 @@
 # crc64 prebuild module
 
-## 1. 仅支持以下版本:
+## 1. Only supports the following versions:
 
 ```
 darwin-x64
@@ -8,9 +8,9 @@ linux-x64
 win32-x64
 ```
 
-* 其他版本可以自行build, 直接运行 cnpm i 即可。
+* Other versions could be built from source code. Just need to run npm -i
 
-## 2. 测试
+## 2. Test
 
 ```
 npm test   # mac & linux

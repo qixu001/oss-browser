@@ -17,7 +17,7 @@ angular.module('web')
       isFav: isFav,
       toggleFav: toggleFav,
 
-      //历史，前进，后退
+      //History, forward, back
       canGoAhead: false,
       canGoBack: false,
       goBack: goBack,
@@ -31,16 +31,16 @@ angular.module('web')
     function toggleFav(addr){
       if(isFav(addr)){
         Fav.remove(addr);
-        Toast.warn(T('bookmark.remove.success')); //'已删除书签'
+        Toast.warn(T('bookmark.remove.success')); //'deleted bookmark'
       }
       else{
         var f = Fav.add(addr);
-        if(f) Toast.success(T('bookmark.add.success'));//'添加书签成功'
-        else Toast.warn(T('bookmark.add.error1')); //'添加书签失败: 超过最大限制'
+        if(f) Toast.success(T('bookmark.add.success'));//'Successfully added bookmark'
+        else Toast.warn(T('bookmark.add.error1')); //'Failed to add the bookmark: Exceeding the limit'
       }
     }
 
-    /************ 历史记录前进后退 start **************/
+    /************  start **************/
     var His = new function(){
       var arr = [];
       var index = -1;
@@ -85,7 +85,7 @@ angular.module('web')
         return arr[index];
       };
 
-      //监听事件
+      //Monitor update
       this.onChange = function(fn){
         this._change = fn;
       };
@@ -116,7 +116,7 @@ angular.module('web')
        $scope.subAddress = getSubAddress();
        $scope.$emit('ossAddressChange', addr.url);
     }
-    /************ 历史记录前进后退 end **************/
+    /************ end **************/
 
 
 
@@ -139,17 +139,17 @@ angular.module('web')
       go(true);
     }
 
-    //保存默认地址
+    //save the default address
     function saveDefaultAddress(){
       AuthInfo.saveToAuthInfo({address: $scope.address });
-      Toast.success(T('saveAsHome.success'),1000); //'设置默认地址成功'
+      Toast.success(T('saveAsHome.success'),1000); //'Save succeeds'
     }
     function getDefaultAddress(){
       var info = AuthInfo.get();
       return info['osspath'] || info['address'] || DEF_ADDR;
     }
 
-    //修正 address
+    //Fix address
     function getAddress(){
       var addr = $scope.address;
       if(!addr){
@@ -174,14 +174,14 @@ angular.module('web')
       return $scope.address;
     }
 
-    //浏览
+    //Browse
     function go(force) {
       var addr = getAddress();
-      His.add(addr); //历史记录
+      His.add(addr); //history
       console.log(addr)
       $scope.$emit('ossAddressChange', addr, force);
     }
-    //向上
+    //Go up
     function goUp() {
       var addr = getAddress();
       if(addr==DEF_ADDR){

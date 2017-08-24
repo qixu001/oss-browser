@@ -11,7 +11,7 @@ angular.module('web')
     /**
      * @param id {String}  uniq
      * @param timeout {int}  ms
-     * @param times {int}  超过次数也会调, 然后重新统计
+     * @param times {int}  fn() is called even when exceeding the times, in which case the counter is reset.
      * @param fn {Function}  callback
      */
 

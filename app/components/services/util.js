@@ -18,22 +18,22 @@ angular.module('web')
        var d = Math.floor(ms/24/3600/1000);
        if(d){
          ms = ms-d*3600*1000*24;
-         t.push(d+' 天');
+         t.push(d+' day');
        }
        var h = Math.floor(ms/3600/1000);
        if(h){
          ms = ms-h*3600*1000;
-         t.push(h+' 小时');
+         t.push(h+' hour');
        }
        var m = Math.floor(ms/60/1000);
        if(m){
          ms = ms-m*60*1000;
-         t.push(m+' 分');
+         t.push(m+' minute');
        }
        var s = Math.floor(ms/1000);
        if(s){
          ms = ms-s*1000;
-         t.push(s+' 秒');
+         t.push(s+' sec');
        }
        //
        //if(ms){

@@ -8,18 +8,18 @@
     <div class="col-sm-8 col-sm-offset-2">
         <div class="panel panel-default shadow10">
           <!-- <div class="panel-heading">
-          AK登录
+          AK Login
            </div> -->
             <div class="panel-heading pd0" style="border:0">
 
                 <ul class="nav nav-tabs">
                   <li role="presentation" ng-class="{active:gtab==1}"><a href="" ng-click="gtab=1">
                     {{'auth.akLogin'|translate}}
-                    <!-- AK登录 -->
+                    <!-- AK Login -->
                   </a></li>
                   <li role="presentation" ng-class="{active:gtab==2}"><a href="" ng-click="gtab=2">
                     {{'auth.tokenLogin'|translate}}
-                    <!-- 授权码登录 -->
+                    <!-- Auth-token login -->
                   </a></li>
                 </ul>
 
@@ -46,7 +46,7 @@
                     <div class="form-group" ng-class="{'has-error': !form1.osspath.$valid }">
                         <label for="input3" class="col-sm-4 control-label">
                           {{'auth.presetOssPath'|translate}}:
-                          <!-- 预设OSS路径(可选): -->
+                          <!-- Set OSS Path(Optional): -->
                         </label>
                         <div class="col-sm-8">
                             <input type="text" name="osspath" ng-pattern="reg_osspath" ng-model="item.osspath"
@@ -58,13 +58,13 @@
                     <div class="form-group" ng-if="item.osspath">
                         <label for="input4" class="col-sm-4 control-label"><span class="red">*</span>
                           {{'region'|translate}}
-                          <!-- 区域: -->
+                          <!-- Region: -->
                         </label>
                         <div class="col-sm-8">
                             <select required ng-model="item.region"
                              class="form-control" id="input4" placeholder="{{'auth.region.placeholder'|translate}}"
                              ng-options="rg.id as rg.label for rg in regions">
-                             </select>
+                            </select>
                         </div>
                     </div>
 
@@ -72,7 +72,7 @@
                     <div class="form-group">
                         <label for="input5" class="col-sm-4 control-label">
                           {{'auth.description'|translate}}:
-                          <!-- 备注(最多30个字): -->
+                          <!-- Comments(Up to 30 characters): -->
                         </label>
                         <div class="col-sm-8">
                             <input type="text" ng-model="item.desc" maxlength="30"
@@ -87,7 +87,7 @@
                                     <input type="checkbox" ng-model="flags.remember"
                                            ng-true-value="'YES'" ng-false-value="'NO'">
                                            {{'auth.remember'|translate}}
-                                           <!-- 记住秘钥 -->
+                                           <!-- Remember keys -->
                                 </label>
                             </div>
                         </div>
@@ -97,13 +97,13 @@
                         <div class="col-sm-offset-4 col-sm-8">
                             <button type="submit" class="btn btn-primary">
                               {{'auth.login'|translate}}
-                              <!-- 登入 -->
+                              <!-- Login -->
                             </button>
 
                              <button type="button" class="btn btn-default" ng-model="flags.showHis"
                                uib-btn-checkbox btn-checkbox-true="'YES'" btn-checkbox-false="'NO'">
                                  {{'auth.akHistories'|translate}}
-                                 <!-- AK历史 -->
+                                 <!-- AK History -->
                              </button>
 
                         </div>
@@ -116,7 +116,7 @@
                     <div class="form-group">
                         <label for="input-x" class="col-sm-3 control-label"><span class="red">*</span>
                           {{'auth.authToken'|translate}}:
-                          <!-- 授权码: -->
+                          <!-- Auth Token: -->
                           <a href="" uib-tooltip="{{'auth.authToken.tooltip'|translate}}" tooltip-append-to-body="true"
                             ng-click="openURL('https://github.com/aliyun/oss-browser/blob/master/authToken.md')">
                             <i class="fa fa-question-circle"></i></a></label>
@@ -126,15 +126,15 @@
                              </textarea>
                              <small class="text-danger" ng-if="!authTokenInfo">
                                {{'auth.authToken.error.invalid'|translate}}
-                               <!-- 请输入有效的授权码 -->
+                               <!-- Please input valid auth token -->
                              </small>
                              <small class="text-danger" ng-if="authTokenInfo && authTokenInfo.isExpired">
                               {{'auth.authToken.error.expired'|translate}}
-                               <!-- 授权码已经过期 -->
+                               <!-- Auth token is expired -->
                              </small>
                              <small class="text-success" ng-if="authTokenInfo && !authTokenInfo.isExpired">
                               ({{"auth.authToken.info.validUntil"|translate:{expiration:authTokenInfo.expirationStr} }},
-                               <!-- (有效期至{{authTokenInfo.expiration|timeFormat}},  -->
+                               <!-- (The expiration time is up to {{authTokenInfo.expiration|timeFormat}},  -->
                                {{'auth.authToken.info.leftTime'|translate}}: <my-timer class="text-warning" expiration="authTokenInfo.expiration"></my-timer>)
                              </small>
                         </div>
@@ -144,7 +144,7 @@
                         <div class="col-sm-offset-3 col-sm-9">
                           <button ng-disabled="!authTokenInfo || authTokenInfo.isExpired" type="submit" class="btn btn-primary">
                             {{'auth.login'|translate}}
-                            <!-- 登入 -->
+                            <!-- Login -->
                           </button>
 
                         </div>
@@ -163,13 +163,13 @@
         <header>
           <h4 class="col-xs-6">
             {{'auth.akHistories'|translate}}
-            <!-- AK历史 -->
+            <!-- AK History -->
           </h4>
           <div class="col-xs-6">
             <a href="" ng-click="showCleanHistories()" class="pull-right text-danger"
             style="padding-top:10px;">
             {{'auth.clearHistories'|translate}}
-            <!-- 清空历史 -->
+            <!-- Clear History -->
           </a>
           </div>
         </header>

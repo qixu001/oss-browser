@@ -4,14 +4,14 @@
       <span aria-hidden="true">&times;</span>
     </button>
     <h4 class="modal-title text-danger">
-      <!-- 简化Policy授权 -->
+      <!-- Simplify Policy grant -->
       {{'simplePolicy.title'|translate}}
     </h4>
   </div>
   <div class="modal-body">
     <div class="clearfix">
       <label class="col-sm-12 control-label">
-        <!-- 将下列资源 -->
+        <!-- grant following resources -->
         {{'simplePolicy.lb1.1'|translate}}:
       </label>
     </div>
@@ -23,18 +23,18 @@
 
     <div class="clearfix form-group">
       <label class="col-sm-12 control-label">
-        <!-- 的权限: -->
+        <!-- permission: -->
         {{'simplePolicy.lb1.2'|translate}}:
       </label>
       <div class="col-sm-12">
         <label class="radio-inline">
           <input type="radio" name="ptype" ng-click="policyChange()" ng-model="grant.privType" id="inlineRadio1" value="readOnly">
-          <!-- 只读权限 -->
+          <!-- read only -->
           {{'privilege.readonly'|translate}}
         </label>
         <label class="radio-inline">
           <input type="radio" name="ptype" ng-click="policyChange()" ng-model="grant.privType" id="inlineRadio2" value="all">
-          <!-- 读写权限 -->
+          <!-- read write -->
           {{'privilege.readwrite'|translate}}
         </label>
       </div>
@@ -43,11 +43,11 @@
     <div class="clearfix form-group">
       <div class="col-sm-12">
         <a href="" ng-show='show_policy!=1' ng-click="show_policy=1" class="">
-          <!-- [查看Policy] -->
+          <!-- [lookup Policy] -->
           [{{'simplePolicy.lb3.1'|translate}}]
         </a>
         <a href="" ng-show='show_policy==1' ng-click="show_policy=0" class="">
-          <!-- [隐藏Policy] -->
+          <!-- [hide Policy] -->
           [{{'simplePolicy.lb3.2'|translate}}]
         </a>
       </div>
@@ -59,7 +59,7 @@
     <div class="clearfix form-group" ng-class="{'has-error':!form1.policyName.$valid}">
       <label class="col-sm-12 control-label">
         {{'simplePolicy.lb4'|translate}}:
-        <!-- 创建为policy，命名为： -->
+        <!-- Create policy，named as： -->
       </label>
       <div class="col-sm-12">
         <input type="text" required maxlength='128' ng-pattern="policyNameReg"
@@ -73,7 +73,7 @@
     <div class="clearfix form-group" ng-class="{'has-error': grant.toType=='role' && !form1.roleName.$valid || grant.toType=='user' && !form1.userName.$valid || grant.toType=='group' && !form1.groupName.$valid}">
       <label class="col-sm-12 control-label">
         {{'simplePolicy.lb5'|translate}}:
-        <!-- 并授权给: -->
+        <!-- granted to: -->
       </label>
       <div class="col-sm-12">
         <div class="input-group">
@@ -81,17 +81,17 @@
             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
               <span ng-if="grant.toType=='user'">
                 <i class="fa fa-user"></i>
-                <!-- 子用户 -->
+                <!-- sub user -->
                 {{'subusers'|translate}}
               </span>
               <span ng-if="grant.toType=='group'">
                 <i class="fa fa-users"></i>
-                <!-- 用户组 -->
+                <!-- user group -->
                 {{'usergroups'|translate}}
               </span>
               <span ng-if="grant.toType=='role'">
                 <i class="fa fa-user-secret"></i>
-                <!-- 角色 -->
+                <!-- roles -->
                 {{'roles'|translate}}
               </span>
 
@@ -102,7 +102,7 @@
               <li>
                 <a href="" ng-click="grant.toType='user'">
                   <i class="fa fa-user"></i>
-                  <!-- 子用户 -->
+                  <!-- sub user -->
                   {{'subusers'|translate}}
                 </a>
               </li>
@@ -110,13 +110,13 @@
                 <a href="" ng-click="grant.toType='group'">
                   <i class="fa fa-users"></i>
                   {{'usergroups'|translate}}
-                  <!-- 用户组 -->
+                  <!-- user group -->
                 </a>
               </li>
               <li>
                 <a href="" ng-click="grant.toType='role'">
                   <i class="fa fa-user-secret"></i>
-                  <!-- 角色 -->
+                  <!-- roles -->
                   {{'roles'|translate}}
                 </a>
               </li>
@@ -149,14 +149,14 @@
            <div class="form-group">
              <label class="col-sm-3 control-label">
                {{'new.user.name'|translate}}:
-               <!-- 新用户名: -->
+               <!-- new user name: -->
              </label>
              <div class="col-sm-9">
                <div class="input-group input-group-sm">
               <input required type="text" class="form-control" ng-model="create.UserName" placeholder="Sub User Name">
                <span class="input-group-btn">
                    <a href="" ng-click="genUserName()" class="btn btn-success">
-                     <!-- 随机生成 -->
+                     <!-- randomly generated -->
                      {{'new.user.random.gen'|translate}}
                    </a>
                </span>
@@ -166,16 +166,16 @@
           <div class="form-group" ng-class="{'has-error':form1.email.$dirty && !form1.email.$valid}">
             <label class="col-sm-3 control-label">
               {{'new.user.email.send'|translate}}:
-              <!-- AK发送到邮件:  -->
+              <!-- AK send to email:  -->
             </label>
             <div class="col-sm-9">
               <input ng-disabled="!mailSmtp.from" name="email" type="email"  placeholder="Email"
               ng-pattern="reg.email" required class="form-control" ng-model="create.Email"/>
               <div class="text-danger" ng-if="!mailSmtp.from">
-                <!-- 还没设置邮件发送配置，需要先设置：  -->
+                <!-- the email setting is not ready, required：  -->
                 {{'new.user.email.noset'|translate}}
                 <a href="" ng-click="showEmailSettings()">
-                  <!-- 打开设置 -->
+                  <!-- open settings -->
                   {{'new.user.email.noset.open'|translate}}
                 </a></div>
             </div>
@@ -191,12 +191,12 @@
     <button type="submit" ng-disabled="!form1.$valid" class="btn btn-success btn-sm">
       <i class="glyphicon glyphicon-ok"></i>
       {{'simplePolicy.ok'|translate}}
-      <!-- 确定授权 -->
+      <!-- Confirm -->
     </button>
 
     <button type="button" class="btn btn-default btn-sm" ng-click="cancel()">
       <i class="glyphicon glyphicon-remove"></i>
-      <!-- 关闭 -->
+      <!-- close -->
       {{'close'|translate}}
     </button>
   </div>

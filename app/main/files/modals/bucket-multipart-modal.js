@@ -14,7 +14,7 @@ angular.module('web')
         },
         loadNext: loadNext,
 
-        //全选相关
+        //select all related
         sel: {
           all: false, //boolean
           has: false, //[] item: ossObject={name,path,...}
@@ -51,14 +51,14 @@ angular.module('web')
 
 
       function showDelete(items){
-        var title = T('delete.multiparts.title'); //删除碎片
-        var message = T('delete.multiparts.message', {num: items.length}); //删除碎片
+        var title = T('delete.multiparts.title'); //delete parts
+        var message = T('delete.multiparts.message', {num: items.length}); //delete parts
         Dialog.confirm( title, message, function(b){
           if(b){
-            Toast.success(T('delete.multiparts.on')); //'正在删除碎片...'
+            Toast.success(T('delete.multiparts.on')); //'deleting parts...'
             ossSvs2.abortAllUploads(bucketInfo.region, bucketInfo.name, items)
             .then(function(){
-              Toast.success(T('delete.multiparts.success')); //'删除碎片成功'
+              Toast.success(T('delete.multiparts.success')); //'deleting parts succeed'
               refresh();
             });
           }

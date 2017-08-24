@@ -25,20 +25,20 @@ angular.module('web')
           localStorage.setItem('transVisible', f);
         },
 
-        //object 相关
+        //object related
         showAddFolder: showAddFolder,
         showDeleteFiles: showDeleteFiles,
         showDeleteFilesSelected: showDeleteFilesSelected,
         showRename: showRename,
         showMove: showMove,
 
-        //bucket相关
+        //bucket related
         showDeleteBucket: showDeleteBucket,
         showAddBucket: showAddBucket,
         showUpdateBucket: showUpdateBucket,
         showBucketMultipart: showBucketMultipart,
 
-        //全选相关
+        //select all related
         sel: {
           hasArchive: false,
           all: false, //boolean
@@ -48,31 +48,31 @@ angular.module('web')
         selectAll: selectAll,
         selectChanged: selectChanged,
 
-        //bucket 单选
+        //bucket selection
         bucket_sel: {
           item: null
         },
         selectBucket: selectBucket,
 
-        //上传， 下载
+        //upload, download
         handlers: {
           uploadFilesHandler: null,
           downloadFilesHandler: null
         },
-        handlerDrop: handlerDrop, //拖拽释放
+        handlerDrop: handlerDrop, //drag and drop
         showUploadDialog: showUploadDialog,
         showDownloadDialog: showDownloadDialog,
 
-        //预览 编辑
+        //preview edit
         showPreview: showPreview,
-        //item 下载
+        //item download
         showDownload: showDownload,
 
-        //授权
+        //grant permission
         showGrant: showGrant,
         showGrantToken: showGrantToken,
         showUserList: showUserList,
-        //地址
+        //address
         showAddress: showAddress,
         showACL: showACL,
 
@@ -158,7 +158,7 @@ angular.module('web')
 
       }
 
-      //按名称过滤
+      //filter by name
       var ttid2;
 
       function searchObjectName() {
@@ -221,7 +221,7 @@ angular.module('web')
             //list buckets
             $scope.currentBucket = null;
             $scope.ref.isBucketList = true;
-            //只有从来没有 list buckets 过，才list，减少http请求开销
+            //only list when no list has been done, to reduce the http request cost
             if (!$scope.buckets && forceRefresh) listBuckets();
 
             clearObjectsList();
@@ -325,8 +325,8 @@ angular.module('web')
         Dialog.confirm(title, message, function (b) {
           if (b) {
             ossSvs2.deleteBucket(item.region, item.name).then(function () {
-              Toast.success(T('bucket.delete.success')); //删除Bucket成功
-              //删除Bucket不是实时的，等待1秒后刷新
+              Toast.success(T('bucket.delete.success')); //Bucket deletion succeeded
+              //Bucket deletion is not real-time. Needs to wait 1 seconds and then refresh.
               $timeout(function () {
                 listBuckets();
               }, 1000);
@@ -372,8 +372,8 @@ angular.module('web')
             },
             callback: function () {
               return function () {
-                Toast.success(T('bucket.add.success')); //'创建Bucket成功'
-                //创建Bucket不是实时的，等待1秒后刷新
+                Toast.success(T('bucket.add.success')); //'Bucket creation succeeded'
+                //Bucket creation is not real-time, need to wait 1 second and then refresh
                 $timeout(function () {
                   listBuckets();
                 }, 1000);
@@ -393,7 +393,7 @@ angular.module('web')
             },
             callback: function () {
               return function () {
-                Toast.success(T('folder.create.success'));//'创建目录成功'
+                Toast.success(T('folder.create.success'));//'folder creation succeeded'
                 $timeout(function () {
                   listFiles();
                 },300);
@@ -413,7 +413,7 @@ angular.module('web')
             },
             callback: function () {
               return function () {
-                Toast.success(T('bucketACL.update.success'));//'修改Bucket权限成功'
+                Toast.success(T('bucketACL.update.success'));//'Bucket permission update succeeded'
                 $timeout(function () {
                   listBuckets();
                 },300);
@@ -584,7 +584,7 @@ angular.module('web')
       var lastSeleteIndex = -1;
 
       function selectChanged(e, index) {
-        //批量选中
+        //batch selection
         if (e && e.shiftKey) {
           var min = Math.min(lastSeleteIndex, index);
           var max = Math.max(lastSeleteIndex, index);
@@ -619,7 +619,7 @@ angular.module('web')
         }
       }
 
-      //上传下载
+      //file upload download
       var oudtid, oddtid;
 
       function showUploadDialog() {
@@ -668,7 +668,7 @@ angular.module('web')
       }
 
       /**
-       * 监听 drop
+       * Monitor drop
        * @param e
        * @returns {boolean}
        */
@@ -688,7 +688,7 @@ angular.module('web')
         return false;
       }
 
-      //授权
+      //Grant permission
       function showGrant(items) {
         $modal.open({
           templateUrl: 'main/files/modals/grant-modal.html',
@@ -704,7 +704,7 @@ angular.module('web')
         });
       }
 
-      //生成授权码
+      //Generate auth token
       function showGrantToken(item) {
         $modal.open({
           templateUrl: 'main/files/modals/grant-token-modal.html',
@@ -720,7 +720,7 @@ angular.module('web')
         });
       }
 
-      //重命名
+      //rename
       function showRename(item) {
         $modal.open({
           templateUrl: 'main/files/modals/rename-modal.html',
@@ -765,7 +765,7 @@ angular.module('web')
         var keyword = $scope.keepMoveOptions.isCopy ? '<span class="text-primary">'+T('copy')+'</span>' : '<span class="text-danger">'+T('move')+'</span>';
 
         if($scope.keepMoveOptions.items.length==1 && $scope.currentInfo.bucket==$scope.keepMoveOptions.currentInfo.bucket){
-           //1个支持重命名
+           //One supports rename
            $modal.open({
              templateUrl: 'main/files/modals/rename-modal.html',
              controller: 'renameModalCtrl',
@@ -838,7 +838,7 @@ angular.module('web')
         });
       }
 
-      //移动
+      //Move
       function showMove(items, isCopy) {
 
         $scope.keepMoveOptions = {
@@ -849,7 +849,7 @@ angular.module('web')
         };
 
       }
-      //地址
+      //Address
       function showAddress(item) {
         $modal.open({
           templateUrl: 'main/files/modals/get-address.html',

@@ -23,7 +23,7 @@ angular.module('web')
 
          safeApply($scope);
 
-         //不是最新版本，获取最新版本的releaseNote
+         //Not the latest version. Get the latest version's release notes.
          if(!$scope.info.isLastVersion){
            var converter = new showdown.Converter();
            upgradeSvs.getLastestReleaseNote($scope.info.lastVersion, function(text){

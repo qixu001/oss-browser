@@ -39,8 +39,8 @@ angular.module('web')
         if (item.status == 'finished') {
           doRemove(item);
         } else {
-          var title = T('remove.from.list.title'); //'从列表中移除'
-          var message = T('remove.from.list.message'); //'确定移除该下载任务?'
+          var title = T('remove.from.list.title'); //'remove from list'
+          var message = T('remove.from.list.message'); //'OK to remove the download job?'
           Dialog.confirm(title, message, function (btn) {
             if (btn) {
               doRemove(item);
@@ -78,8 +78,8 @@ angular.module('web')
         if (!$scope.lists.downloadJobList || $scope.lists.downloadJobList.length == 0) {
           return;
         }
-        var title = T('clear.all.title');//清空所有
-        var message = T('clear.all.download.message');//确定清空所有下载任务?
+        var title = T('clear.all.title');//clear all
+        var message = T('clear.all.download.message');//Ok to clear all download jobs?
         Dialog.confirm(title, message, function (btn) {
           if (btn) {
             var arr = $scope.lists.downloadJobList;
@@ -104,13 +104,13 @@ angular.module('web')
 
           ossDownloadManager.stopCreatingJobs();
 
-          Toast.info(T('pause.on')); //'正在暂停...'
+          Toast.info(T('pause.on')); //'Pausing..'
           $scope.allActionBtnDisabled = true;
 
           angular.forEach(arr, function (n) {
             if (n.status == 'running' || n.status == 'waiting') n.stop();
           });
-          Toast.success(T('pause.success')); //'暂停成功'
+          Toast.success(T('pause.success')); //'Paused'
 
           $timeout(function () {
             ossDownloadManager.saveProg();
@@ -123,7 +123,7 @@ angular.module('web')
         var arr = $scope.lists.downloadJobList;
         stopFlag = false;
 
-        //串行
+        //serialization
         if (arr && arr.length > 0) {
           $scope.allActionBtnDisabled = true;
           DelayDone.seriesRun(arr, function eachItemFn(n, fn) {

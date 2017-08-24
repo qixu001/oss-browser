@@ -78,7 +78,7 @@ angular.module('web')
 
     }
 
-    //流控, 同时只能有 n 个上传任务.
+    //concurrency control, can only have n concurrent upload tasks
     function checkStart() {
       var maxConcurrency = settingsSvs.maxDownloadJobCount.get();
       //console.log(concurrency , maxConcurrency);
@@ -98,10 +98,10 @@ angular.module('web')
     }
 
     /**
-     * 下载
-     * @param fromOssInfos {array}  item={region, bucket, path, name, size=0, isFolder=false}  有可能是目录，需要遍历
+     * Download
+     * @param fromOssInfos {array}  item={region, bucket, path, name, size=0, isFolder=false}  it could be folder, needs to iterate
      * @param toLocalPath {string}
-     * @param jobsAddedFn {Function} 加入列表完成回调方法， jobs列表已经稳定
+     * @param jobsAddedFn {Function} callback of adding list completion.
      */
     function createDownloadJobs(fromOssInfos, toLocalPath, jobsAddedFn) {
       stopCreatingFlag = false;
@@ -172,14 +172,14 @@ angular.module('web')
         var filePath = path.join(toLocalPath, path.relative(dirPath, ossInfo.path));
 
         if (ossInfo.isFolder) {
-          //目录
+          //folder
           fs.mkdir(filePath, function (err) {
 
             if(err && err.code!='EEXIST'){
                 Toast.error('创建目录['+filePath+']失败:'+err.message);
                 return;
             }
-            //遍历 oss 目录
+            //iterate oss folder
             function progDig(marker){
               ossSvs2.listFiles(ossInfo.region, ossInfo.bucket, ossInfo.path, marker).then(function (result) {
 
@@ -204,7 +204,7 @@ angular.module('web')
           });
 
         } else {
-          //文件
+          //file
           var job = createJob(authInfo, {
             region: ossInfo.region,
             from: {
@@ -288,7 +288,7 @@ angular.module('web')
     }
 
     /**
-     * 获取保存的进度
+     * save the progress
      */
     function loadProg() {
       try {
@@ -299,7 +299,7 @@ angular.module('web')
       return JSON.parse(data ? data.toString() : '[]');
     }
 
-    //下载进度保存路径
+    //the file path for saving the progress data
     function getDownProgFilePath() {
       var folder = path.join(os.homedir(), '.oss-browser');
       if(!fs.existsSync(folder)){

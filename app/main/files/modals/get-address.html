@@ -5,7 +5,7 @@
     </button>
     <h4 class="modal-title">
       <i class="fa fa-download"></i>
-      <!-- 获取地址 -->
+      <!-- get address -->
       {{'getAddress.title'|translate}}
     </h4>
   </div>
@@ -22,7 +22,7 @@
     <div class="form-group" ng-if="step==1">
       <label class="col-sm-2 control-label" for="acl">
         {{'address'|translate}}
-        <!-- 地址: -->
+        <!-- address: -->
 
       </label>
       <div class="col-sm-8">
@@ -30,7 +30,7 @@
           <input type="text" id="genAddress" ng-model="item.url" rows="4"  class="input-md form-control"/>
           <span class="input-group-btn">
             <a href="" class="btn btn-default"  clipboard-button target="'#genAddress'">
-              <!-- 点击复制 -->
+              <!-- click to copy -->
               {{'click.copy'|translate}}
             </a>
           </span>
@@ -42,11 +42,11 @@
     <div class="form-group" ng-if="step==2">
       <label class="col-sm-2 control-label" for="acl">
         {{'address'|translate}}:
-        <!-- 地址: -->
+        <!-- address: -->
 
       </label>
       <div ng-if="!info.url"  class="col-sm-10">
-        <!-- 请输入链接有效期: -->
+        <!-- please input the link's expiration time: -->
         {{'getAddress.message'|translate}}:
         <input type="number" ng-model="info.sec" id="sec" required
         placeholder="" class="input-md form-control" style="display:inline-block;width:80px"/>
@@ -54,7 +54,7 @@
         &nbsp;&nbsp;
         <button type="submit" class="btn btn-success btn-sm">
           <i class="glyphicon glyphicon-ok"></i>
-          <!-- 生成 -->
+          <!-- generate -->
           {{'generate'|translate}}
         </button>
       </div>
@@ -64,7 +64,7 @@
           <input type="text" id="genAddress2" ng-model="info.url" rows="4"  class="input-md form-control"/>
           <span class="input-group-btn">
             <a href="" class="btn btn-info" clipboard-button target="'#genAddress2'">
-              <!-- 点击复制 -->
+              <!-- click to copy -->
               {{'click.copy'|translate}}
             </a>
           </span>
@@ -80,7 +80,7 @@
 
     <div class="text-center">
       <qrcode ng-if="info.url" text="info.url" width="300" height="300">
-        <!-- 扫码下载 -->
+        <!-- scan the QRCode to download -->
         {{'qrcode.download'|translate}}
       </qrcode>
     </div>

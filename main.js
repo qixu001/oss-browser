@@ -12,7 +12,7 @@ const path = require('path');
 const nativeImage = require('electron').nativeImage;
 
 ///*****************************************
-//静态服务
+//static service
 const PORTS = [7123,7124,7125,7126];
 
 for(var port of PORTS){
@@ -25,9 +25,9 @@ for(var port of PORTS){
     console.log(e);
   }
 }
-//监听web page里发出的message
+//monitor messages from web page
 ipcMain.on('asynchronous-message', (event, arg) => {
-  //在main process里向web page发出message
+  //send message to webpage from main process
   event.sender.send('asynchronous-reply', port);
 });
 ///*****************************************
@@ -88,7 +88,7 @@ function createWindow() {
     if (process.platform === 'darwin') {
       // Create the Application's main menu
       let template = getMenuTemplate();
-      //注册菜单, 打包后可以复制, 但是不能打开 devTools
+      //Register menu, copy after package. Cannot open devTools
       Menu.setApplicationMenu(Menu.buildFromTemplate(template));
     }
   }

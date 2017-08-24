@@ -1,9 +1,9 @@
-# 邮件发送设置
+# Settings for sending email
 
-## 举例参考:
+## Examples:
 
 
-* 1. QQ邮箱:
+* 1. QQ Mail:
 
 ```
 "host": "smtp.qq.com",
